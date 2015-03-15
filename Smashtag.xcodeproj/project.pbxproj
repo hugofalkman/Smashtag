@@ -18,6 +18,7 @@
 		B1DFE06C1AADA2F600952732 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFE0681AADA2F600952732 /* Tweet.swift */; };
 		B1DFE06D1AADA2F600952732 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFE0691AADA2F600952732 /* TwitterRequest.swift */; };
 		B1DFE06E1AADA2F600952732 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFE06A1AADA2F600952732 /* User.swift */; };
+		B1FA8D231AB2378100D08319 /* MentionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FA8D221AB2378100D08319 /* MentionsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B1DFE0681AADA2F600952732 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		B1DFE0691AADA2F600952732 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		B1DFE06A1AADA2F600952732 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B1FA8D221AB2378100D08319 /* MentionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				B1DFE0641AADA11A00952732 /* TweetTableViewController.swift */,
 				B13479A71AADDB29003D093E /* TweetTableViewCell.swift */,
+				B1FA8D221AB2378100D08319 /* MentionsTableViewController.swift */,
 				B16B00941AAD9F1700238B67 /* Main.storyboard */,
 				B1DFE0661AADA2F600952732 /* Twitter */,
 				B16B008E1AAD9F1700238B67 /* Supporting Files */,
@@ -235,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1FA8D231AB2378100D08319 /* MentionsTableViewController.swift in Sources */,
 				B1DFE0651AADA11A00952732 /* TweetTableViewController.swift in Sources */,
 				B1DFE06C1AADA2F600952732 /* Tweet.swift in Sources */,
 				B1DFE06B1AADA2F600952732 /* MediaItem.swift in Sources */,

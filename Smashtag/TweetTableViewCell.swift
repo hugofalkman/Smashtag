@@ -12,9 +12,11 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet: Tweet? {
         didSet {
+            tweetMentionsCount = (tweet?.hashtags.count ?? 0) + (tweet?.urls.count ?? 0) + (tweet?.userMentions.count ?? 0) + (tweet?.media.count ?? 0)
             updateUI()
         }
     }
+    var tweetMentionsCount = 0
 
     @IBOutlet weak var tweetProfileImageView: UIImageView!
     @IBOutlet weak var tweetScreenNameLabel: UILabel!
@@ -22,9 +24,9 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetCreatedLabel: UILabel!
     
     private struct Constants {
-        static let hashtagColor = UIColor.redColor()
+        static let hashtagColor = UIColor.purpleColor()
         static let urlColor = UIColor.blueColor()
-        static let userColor = UIColor.magentaColor()
+        static let userColor = UIColor.orangeColor()
     }
     
     private func updateUI() {
@@ -41,6 +43,13 @@ class TweetTableViewCell: UITableViewCell {
             tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
             setProfileImageView(tweet) // tweetProfileImageView updated asynchronously
             tweetCreatedLabel?.text = setCreatedLabel(tweet)
+            
+            // set disclosure indicator
+            if tweetMentionsCount > 0 {
+                accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            } else {
+                accessoryType = UITableViewCellAccessoryType.None
+            }
         }
     }
     
@@ -90,3 +99,8 @@ class TweetTableViewCell: UITableViewCell {
         return formatter.stringFromDate(tweet.created)
     }
 }
+
+
+
+
+

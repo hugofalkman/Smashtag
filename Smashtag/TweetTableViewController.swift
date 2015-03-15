@@ -66,6 +66,8 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                             self.lastSuccessfulRequest = request
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
+                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections())), withRowAnimation: .None)
+                            self.title = self.searchText
                         }
                         sender?.endRefreshing()
                     }
@@ -92,6 +94,11 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     // MARK: - UITableViewDataSource
+    
+    private struct Storyboard {
+        static let cellReuseIdentifier = "Tweet"
+        static let mentionsIdentifier = "ShowMentions"
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tweets.count
@@ -99,10 +106,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets[section].count
-    }
-
-    private struct Storyboard {
-        static let cellReuseIdentifier = "Tweet"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -148,14 +151,28 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        // cancel segue if zero mentions
+        if identifier == Storyboard.mentionsIdentifier {
+            if let cell = sender as? TweetTableViewCell {
+                if cell.tweetMentionsCount == 0 {return false}
+            }
+        }
+        return true
     }
-    */
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == Storyboard.mentionsIdentifier {
+                if let cell = sender as? TweetTableViewCell {
+                    let seguedToMTVC = segue.destinationViewController as MentionsTableViewController
+                    seguedToMTVC.tweet = cell.tweet
+                }
+            }
+        }
+    }
 
 }
