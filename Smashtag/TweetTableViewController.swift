@@ -26,9 +26,16 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         refresh()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "preferredContentSizeChanged:",
+            name: UIContentSizeCategoryDidChangeNotification,
+            object: nil)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,6 +57,10 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
+    func preferredContentSizeChanged(notification: NSNotification) {
+        refresh()
+    }
+    
     func refresh() {
         if refreshControl != nil {
             refreshControl?.beginRefreshing()

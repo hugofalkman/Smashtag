@@ -10,10 +10,43 @@ import UIKit
 
 class MentionsTableViewController: UITableViewController {
     
+    enum Mention: Printable {
+        case Image(NSURL, Double)
+        case Hashtag(String)
+        case User(String)
+        case URL(String)
+        
+        var description: String {
+            switch self {
+            case .Image(let URL, _): return URL.path!
+            case .Hashtag (let key): return key
+            case .User (let key): return key
+            case .URL (let key): return key
+            }
+        }
+    }
+    
     var tweet: Tweet? {
         didSet {
-            println("\(tweet)")
-            updateUI()
+            title = tweet?.user.name
+            
+            setSection("Images", tweetProperty: tweet?.media) {Mention.Image($0.url, $0.aspectRatio)}
+            setSection("Hashtags", tweetProperty: tweet?.hashtags) {Mention.Hashtag($0.keyword)}
+            setSection("Users", tweetProperty: tweet?.userMentions) {Mention.User($0.keyword)}
+            setSection("URLs", tweetProperty: tweet?.urls) {Mention.URL($0.keyword)}
+        }
+    }
+    
+    private var mentions = [[Mention]]()
+    private var sections = [String]() // section headers
+    
+    // help function to set one section in mentions array of arrays
+    private func setSection<T>(section: String, tweetProperty: [T]?, transform: T -> Mention) {
+        if let property = tweetProperty {
+            if property.count > 0 {
+                mentions.append(property.map(transform))
+                sections.append(section)
+            }
         }
     }
 
@@ -26,35 +59,59 @@ class MentionsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    func updateUI() {
-        
-    }
 
     // MARK: - Table view data source
+    
+    private struct Storyboard {
+        static let imageCellReuseIdentifier = "Image"
+        static let mentionCellReuseIdentifier = "Mention"
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return mentions.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return mentions[section].count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
+        let mention = mentions[indexPath.section][indexPath.row]
+        switch mention {
+        case .Image(let url, let _):
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.imageCellReuseIdentifier, forIndexPath: indexPath) as ImageTableViewCell
+            cell.imageUrl = url
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mentionCellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = mention.description
+            return cell
+        }
     }
-    */
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let mention = mentions[indexPath.section][indexPath.row]
+        switch mention {
+        case .Image(_, let ratio):
+            return tableView.bounds.size.width / CGFloat(ratio)
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
+        header.textLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
