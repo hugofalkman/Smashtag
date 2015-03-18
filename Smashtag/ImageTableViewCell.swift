@@ -11,6 +11,7 @@ import UIKit
 class ImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetImage: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var imageUrl: NSURL? {
         didSet {updateUI()}
@@ -18,6 +19,7 @@ class ImageTableViewCell: UITableViewCell {
     
     private func updateUI() {
         if let url = imageUrl {
+            spinner?.startAnimating()
             let qos = Int(QOS_CLASS_USER_INITIATED.value)
             dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
                 let imageData = NSData(contentsOfURL: url)
@@ -28,6 +30,7 @@ class ImageTableViewCell: UITableViewCell {
                         } else {
                             self.tweetImage?.image = nil
                         }
+                        self.spinner?.stopAnimating()
                     }
                 }
             }

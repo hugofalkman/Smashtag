@@ -21,6 +21,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             refresh()
         }
     }
+    var searchTextCandidate: String?
     
     // MARK: - View Controller Lifecycle
     
@@ -43,9 +44,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    var lastSuccessfulRequest: TwitterRequest?
+    private var lastSuccessfulRequest: TwitterRequest?
     
-    var nextRequestToAttempt: TwitterRequest? {
+    private var nextRequestToAttempt: TwitterRequest? {
         if lastSuccessfulRequest == nil {
             if searchText != nil {
                 return TwitterRequest(search: searchText!, count: 100)
@@ -61,7 +62,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         refresh()
     }
     
-    func refresh() {
+    private func refresh() {
         if refreshControl != nil {
             refreshControl?.beginRefreshing()
         }
@@ -102,6 +103,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             searchText = textField.text
         }
         return true
+    }
+    
+    @IBAction func returnMention(segue: UIStoryboardSegue) {
+        if let candidate = searchTextCandidate {
+            searchText = candidate
+        }
+        
     }
     
     // MARK: - UITableViewDataSource

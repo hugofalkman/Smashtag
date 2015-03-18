@@ -10,7 +10,7 @@ import UIKit
 
 class MentionsTableViewController: UITableViewController {
     
-    enum Mention: Printable {
+    private enum Mention: Printable {
         case Image(NSURL, Double)
         case Hashtag(String)
         case User(String)
@@ -49,6 +49,12 @@ class MentionsTableViewController: UITableViewController {
             }
         }
     }
+    
+    private struct Storyboard {
+        static let imageCellReuseIdentifier = "Image"
+        static let mentionCellReuseIdentifier = "Mention"
+        static let unwindSegueIdentifier = "searchMention"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +67,6 @@ class MentionsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
-    private struct Storyboard {
-        static let imageCellReuseIdentifier = "Image"
-        static let mentionCellReuseIdentifier = "Mention"
-    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return mentions.count
@@ -147,14 +148,35 @@ class MentionsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        // if url, cancel seque and open safari
+        if identifier == Storyboard.unwindSegueIdentifier {
+            if let cell = sender as? UITableViewCell {
+                if let url = cell.textLabel?.text {
+                    if url.hasPrefix("http") {
+                        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+                        return false
+                    }
+                }
+            }
+        }
+        return true
     }
-    */
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            if identifier == Storyboard.unwindSegueIdentifier {
+                if let ttvc = segue.destinationViewController as? TweetTableViewController {
+                    if let cell = sender as? UITableViewCell {
+                        ttvc.searchTextCandidate = cell.textLabel?.text
+                    }
+                }
+            }
+        }
+    }
+    
 
 }
