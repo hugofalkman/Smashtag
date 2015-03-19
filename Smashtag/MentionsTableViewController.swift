@@ -54,6 +54,7 @@ class MentionsTableViewController: UITableViewController {
         static let imageCellReuseIdentifier = "Image"
         static let mentionCellReuseIdentifier = "Mention"
         static let unwindSegueIdentifier = "searchMention"
+        static let scrollViewSegueIdentifier = "showScrolledImage"
     }
 
     override func viewDidLoad() {
@@ -168,13 +169,28 @@ class MentionsTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            if identifier == Storyboard.unwindSegueIdentifier {
+            switch identifier {
+            case Storyboard.unwindSegueIdentifier:
                 if let ttvc = segue.destinationViewController as? TweetTableViewController {
                     if let cell = sender as? UITableViewCell {
+                        // wait to add to searchText until in the IBAction returnMention function
+                        // you know that the segue wasnt cancelled for a url -- see above
                         ttvc.searchTextCandidate = cell.textLabel?.text
                     }
                 }
+            case Storyboard.scrollViewSegueIdentifier:
+                if let ivc = segue.destinationViewController as? ImageViewController {
+                    if let cell = sender as? ImageTableViewCell {
+                        ivc.image = cell.tweetImage.image
+                        if let title = self.title {
+                        ivc.title = title + ": Image"
+                        }
+                    }
+                    
+                }
+            default: break
             }
+            
         }
     }
     

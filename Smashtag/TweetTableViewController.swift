@@ -78,7 +78,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                             self.lastSuccessfulRequest = request
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
-                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections())), withRowAnimation: .None)
+                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections() - 1)), withRowAnimation: .None)
                             self.title = self.searchText
                         }
                         sender?.endRefreshing()

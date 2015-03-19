@@ -104,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="1527" y="334"/>
         </scene>
-        <!--Mentions Table View Controller-->
+        <!--User Name-->
         <scene sceneID="7Q9-52-Zzw">
             <objects>
                 <tableViewController id="WJJ-vD-jyo" customClass="MentionsTableViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,17 +130,17 @@
                                     <segue destination="uOp-hg-APD" kind="unwind" identifier="searchMention" unwindAction="returnMention:" id="WND-LK-i5z"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Image" rowHeight="167" id="KiL-T8-itN" customClass="ImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Image" rowHeight="167" id="KiL-T8-itN" customClass="ImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KiL-T8-itN" id="ruk-jo-ala">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1wH-sV-WN4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
-                                        </imageView>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RQb-yb-Chh">
-                                            <rect key="frame" x="290" y="74" width="20" height="20"/>
+                                            <rect key="frame" x="273.5" y="74" width="20" height="20"/>
                                         </activityIndicatorView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1wH-sV-WN4">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="159"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1wH-sV-WN4" firstAttribute="leading" secondItem="ruk-jo-ala" secondAttribute="leading" id="FHu-OK-I2D"/>
@@ -154,6 +154,7 @@
                                 <connections>
                                     <outlet property="spinner" destination="RQb-yb-Chh" id="dpZ-rS-TEp"/>
                                     <outlet property="tweetImage" destination="1wH-sV-WN4" id="dJS-0B-4iC"/>
+                                    <segue destination="B1s-mv-eAm" kind="show" identifier="showScrolledImage" id="VX6-kA-hMM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -162,11 +163,47 @@
                             <outlet property="delegate" destination="WJJ-vD-jyo" id="11A-iK-BiC"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="User Name" id="hgo-Yh-ioH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdK-JO-9Bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uOp-hg-APD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1527" y="1069"/>
+        </scene>
+        <!--User Name Image-->
+        <scene sceneID="3jd-Jq-nSd">
+            <objects>
+                <viewController id="B1s-mv-eAm" customClass="ImageViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W8J-hF-3IP"/>
+                        <viewControllerLayoutGuide type="bottom" id="o5Z-MM-K12"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ovy-d3-ban">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dt4-WP-KgY">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dt4-WP-KgY" firstAttribute="top" secondItem="W8J-hF-3IP" secondAttribute="bottom" id="FdQ-lc-IhJ"/>
+                            <constraint firstAttribute="trailing" secondItem="dt4-WP-KgY" secondAttribute="trailing" id="gyC-Hb-HIu"/>
+                            <constraint firstItem="dt4-WP-KgY" firstAttribute="bottom" secondItem="o5Z-MM-K12" secondAttribute="top" id="rbE-9g-zba"/>
+                            <constraint firstItem="dt4-WP-KgY" firstAttribute="leading" secondItem="ovy-d3-ban" secondAttribute="leading" id="uw0-VB-Qsi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="User Name Image" id="vap-8K-z5N">
+                        <barButtonItem key="backBarButtonItem" title="s" id="3At-ig-YxZ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="dt4-WP-KgY" id="WRL-6d-AYP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRM-7o-I5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="1069"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EqI-rO-VSq">
