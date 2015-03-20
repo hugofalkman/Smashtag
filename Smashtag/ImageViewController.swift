@@ -31,6 +31,11 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         return imageView
     }
     
+    private var notZoomed = true
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+        notZoomed = false
+    }
+    
     private var imageView = UIImageView()
     private var imageSize = CGSizeMake(0, 0)
     
@@ -41,6 +46,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if notZoomed {
         scrollView.contentSize = imageSize
         scrollView.contentOffset = CGPointZero
         let widthScale = scrollView.bounds.size.width / imageSize.width
@@ -50,6 +56,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.maximumZoomScale = max(widthScale, heightScale)
         scrollView.zoomScale = minimum
         // println("\(minimum)")
+        }
     }
 }
 
