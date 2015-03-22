@@ -11,12 +11,16 @@ import UIKit
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     var tweets = [[Tweet]]()
+    var history = SearchHistory()
     
     var searchText: String? = "#stanford" {
         didSet {
             lastSuccessfulRequest = nil
             searchTextField?.text = searchText
             tweets.removeAll()
+            if let text = searchText {
+            history.addSearch(text)
+            }
             tableView.reloadData()
             refresh()
         }
@@ -27,6 +31,10 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let text = searchText {
+        history.addSearch(text)
+        }
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -106,6 +114,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func returnMention(segue: UIStoryboardSegue) {
+        // seque wasn't cancelled so now searchText can be set
         if let candidate = searchTextCandidate {
             searchText = candidate
         }
@@ -184,6 +193,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if let identifier = segue.identifier {
             if identifier == Storyboard.mentionsIdentifier {
                 if let cell = sender as? TweetTableViewCell {

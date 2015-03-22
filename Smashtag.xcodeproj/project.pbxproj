@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B12BF0831ABEFE3600E73AE3 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12BF0821ABEFE3600E73AE3 /* SearchHistory.swift */; };
 		B13479A81AADDB29003D093E /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13479A71AADDB29003D093E /* TweetTableViewCell.swift */; };
 		B16B00911AAD9F1700238B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B00901AAD9F1700238B67 /* AppDelegate.swift */; };
 		B16B00961AAD9F1700238B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16B00941AAD9F1700238B67 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		B16B009B1AAD9F1700238B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16B00991AAD9F1700238B67 /* LaunchScreen.xib */; };
 		B16B00A71AAD9F1700238B67 /* SmashtagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B00A61AAD9F1700238B67 /* SmashtagTests.swift */; };
 		B1DB21BC1ABA2E050051E686 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */; };
+		B1DB7B3C1ABE2D6F0033789E /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */; };
 		B1DC96401AB5D38A00163C11 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC963F1AB5D38A00163C11 /* ImageTableViewCell.swift */; };
 		B1DFE0651AADA11A00952732 /* TweetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFE0641AADA11A00952732 /* TweetTableViewController.swift */; };
 		B1DFE06B1AADA2F600952732 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFE0671AADA2F600952732 /* MediaItem.swift */; };
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B12BF0821ABEFE3600E73AE3 /* SearchHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHistory.swift; path = ../SearchHistory.swift; sourceTree = "<group>"; };
 		B13479A71AADDB29003D093E /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		B16B008B1AAD9F1700238B67 /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16B008F1AAD9F1700238B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		B16B00A51AAD9F1700238B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B16B00A61AAD9F1700238B67 /* SmashtagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmashtagTests.swift; sourceTree = "<group>"; };
 		B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		B1DC963F1AB5D38A00163C11 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		B1DFE0641AADA11A00952732 /* TweetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewController.swift; sourceTree = "<group>"; };
 		B1DFE0671AADA2F600952732 /* MediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				B1FA8D221AB2378100D08319 /* MentionsTableViewController.swift */,
 				B1DC963F1AB5D38A00163C11 /* ImageTableViewCell.swift */,
 				B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */,
+				B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */,
+				B12BF0821ABEFE3600E73AE3 /* SearchHistory.swift */,
 				B16B00941AAD9F1700238B67 /* Main.storyboard */,
 				B1DFE0661AADA2F600952732 /* Twitter */,
 				B16B008E1AAD9F1700238B67 /* Supporting Files */,
@@ -252,7 +258,9 @@
 				B1DFE06B1AADA2F600952732 /* MediaItem.swift in Sources */,
 				B16B00911AAD9F1700238B67 /* AppDelegate.swift in Sources */,
 				B1DFE06D1AADA2F600952732 /* TwitterRequest.swift in Sources */,
+				B1DB7B3C1ABE2D6F0033789E /* HistoryTableViewController.swift in Sources */,
 				B1DFE06E1AADA2F600952732 /* User.swift in Sources */,
+				B12BF0831ABEFE3600E73AE3 /* SearchHistory.swift in Sources */,
 				B13479A81AADDB29003D093E /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

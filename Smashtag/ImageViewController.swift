@@ -30,6 +30,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
     }
+    private struct Constants {
+        static let maxZooming: CGFloat = 5.0
+    }
     
     private var notZoomed = true
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
@@ -53,9 +56,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         let heightScale = scrollView.bounds.size.height / imageSize.height
         let minimum = min(widthScale, heightScale)
         scrollView.minimumZoomScale = minimum
-        scrollView.maximumZoomScale = max(widthScale, heightScale)
+        scrollView.maximumZoomScale = max(widthScale, heightScale, Constants.maxZooming)
         scrollView.zoomScale = minimum
-        // println("\(minimum)")
+        // println("\(widthScale) \(heightScale)")
         }
     }
 }
