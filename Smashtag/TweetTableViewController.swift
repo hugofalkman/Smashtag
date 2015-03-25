@@ -13,7 +13,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     var tweets = [[Tweet]]()
     var history = SearchHistory()
     
-    var searchText: String? = "#stanford" {
+    var searchText: String? = "#Stanford" {
         didSet {
             lastSuccessfulRequest = nil
             searchTextField?.text = searchText
