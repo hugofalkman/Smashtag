@@ -32,7 +32,10 @@ class MentionsTableViewController: UITableViewController {
             
             setSection("Images", tweetProperty: tweet?.media) {Mention.Image($0.url, $0.aspectRatio)}
             setSection("Hashtags", tweetProperty: tweet?.hashtags) {Mention.Hashtag($0.keyword)}
-            setSection("Users", tweetProperty: tweet?.userMentions) {Mention.User($0.keyword)}
+            if let name = tweet?.user.screenName {
+            setSection("Users", tweetProperty: tweet?.userMentions, propertyInit:
+                Mention.User("@\(name)")) {Mention.User($0.keyword)}
+            }
             setSection("URLs", tweetProperty: tweet?.urls) {Mention.URL($0.keyword)}
         }
     }
@@ -42,14 +45,18 @@ class MentionsTableViewController: UITableViewController {
     
     // help function to set one section in mentions array of arrays
     private func setSection<T>(section: String, tweetProperty: [T]?, transform: T -> Mention) {
-        if let property = tweetProperty {
-            if property.count > 0 {
-                mentions.append(property.map(transform))
-                sections.append(section)
-            }
+        return setSection(section, tweetProperty: tweetProperty, propertyInit: nil , transform: transform)
+    }
+    private func setSection<T>(section: String, tweetProperty: [T]?, propertyInit: Mention?, transform: T -> Mention) {
+        var sectionToAdd = [Mention]()
+        if let pI = propertyInit { sectionToAdd.append(pI) }
+        if let property = tweetProperty { sectionToAdd += property.map(transform) }
+        if sectionToAdd.count > 0 {
+            mentions.append(sectionToAdd)
+            sections.append(section)
         }
     }
-    
+
     private struct Storyboard {
         static let imageCellReuseIdentifier = "Image"
         static let mentionCellReuseIdentifier = "Mention"

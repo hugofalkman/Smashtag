@@ -117,6 +117,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         // seque wasn't cancelled so now searchText can be set
         if let candidate = searchTextCandidate {
             searchText = candidate
+            if candidate.hasPrefix("@") {
+                searchText! += " OR from:" + candidate
+            }
         }
         
     }
