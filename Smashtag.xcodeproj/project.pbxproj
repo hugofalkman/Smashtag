@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B128C3311AC35CD500229ADF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B128C3301AC35CD500229ADF /* WebViewController.swift */; };
 		B13479A81AADDB29003D093E /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13479A71AADDB29003D093E /* TweetTableViewCell.swift */; };
 		B16B00911AAD9F1700238B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B00901AAD9F1700238B67 /* AppDelegate.swift */; };
 		B16B00961AAD9F1700238B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16B00941AAD9F1700238B67 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B128C3301AC35CD500229ADF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B13479A71AADDB29003D093E /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		B16B008B1AAD9F1700238B67 /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16B008F1AAD9F1700238B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */,
 				B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */,
 				B1E5D05F1ABFE5B5002BFC9E /* SearchHistory.swift */,
+				B128C3301AC35CD500229ADF /* WebViewController.swift */,
 				B16B00941AAD9F1700238B67 /* Main.storyboard */,
 				B1DFE0661AADA2F600952732 /* Twitter */,
 				B16B008E1AAD9F1700238B67 /* Supporting Files */,
@@ -261,6 +264,7 @@
 				B1DFE06D1AADA2F600952732 /* TwitterRequest.swift in Sources */,
 				B1DB7B3C1ABE2D6F0033789E /* HistoryTableViewController.swift in Sources */,
 				B1DFE06E1AADA2F600952732 /* User.swift in Sources */,
+				B128C3311AC35CD500229ADF /* WebViewController.swift in Sources */,
 				B13479A81AADDB29003D093E /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

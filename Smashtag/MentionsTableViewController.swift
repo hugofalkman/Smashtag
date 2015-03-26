@@ -62,6 +62,7 @@ class MentionsTableViewController: UITableViewController {
         static let mentionCellReuseIdentifier = "Mention"
         static let unwindSegueIdentifier = "searchMention"
         static let scrollViewSegueIdentifier = "showScrolledImage"
+        static let webViewSegueIdentifier = "showWebView"
     }
 
     override func viewDidLoad() {
@@ -165,7 +166,8 @@ class MentionsTableViewController: UITableViewController {
             if let cell = sender as? UITableViewCell {
                 if let url = cell.textLabel?.text {
                     if url.hasPrefix("http") {
-                        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+                        performSegueWithIdentifier(Storyboard.webViewSegueIdentifier, sender: cell)
+                        // UIApplication.sharedApplication().openURL(NSURL(string: url)!)
                         return false
                     }
                 }
@@ -193,7 +195,15 @@ class MentionsTableViewController: UITableViewController {
                         ivc.title = title + ": Image"
                         }
                     }
-                    
+                }
+            case Storyboard.webViewSegueIdentifier:
+                if let wvc = segue.destinationViewController as? WebViewController {
+                    if let cell = sender as? UITableViewCell {
+                        if let url = cell.textLabel?.text {
+                            wvc.title = url
+                            wvc.url = NSURL(string: url)
+                        }
+                    }
                 }
             default: break
             }

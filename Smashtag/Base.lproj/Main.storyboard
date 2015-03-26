@@ -140,7 +140,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DD-uJ-VST" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1444" y="1780"/>
+            <point key="canvasLocation" x="1500" y="1772"/>
         </scene>
         <!--User Name-->
         <scene sceneID="7Q9-52-Zzw">
@@ -173,12 +173,13 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KiL-T8-itN" id="ruk-jo-ala">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RQb-yb-Chh">
-                                            <rect key="frame" x="273.5" y="74" width="20" height="20"/>
-                                        </activityIndicatorView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1wH-sV-WN4">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="159"/>
                                         </imageView>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RQb-yb-Chh">
+                                            <rect key="frame" x="271" y="74" width="20" height="20"/>
+                                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1wH-sV-WN4" firstAttribute="leading" secondItem="ruk-jo-ala" secondAttribute="leading" id="FHu-OK-I2D"/>
@@ -202,11 +203,55 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User Name" id="hgo-Yh-ioH"/>
+                    <connections>
+                        <segue destination="TD9-Gc-3gW" kind="show" identifier="showWebView" id="ooE-ej-udm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdK-JO-9Bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uOp-hg-APD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2209" y="1045"/>
+        </scene>
+        <!--Web View-->
+        <scene sceneID="4T1-6s-upB">
+            <objects>
+                <viewController id="TD9-Gc-3gW" customClass="WebViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GrI-2n-jlC"/>
+                        <viewControllerLayoutGuide type="bottom" id="iGV-e7-iug"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="14n-UE-kbd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efm-Es-iVV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="X0q-hG-ukf">
+                                <rect key="frame" x="287" y="292" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="X0q-hG-ukf" secondAttribute="centerX" id="0Az-R6-LBL"/>
+                            <constraint firstAttribute="trailing" secondItem="Efm-Es-iVV" secondAttribute="trailing" id="3mM-1v-vGP"/>
+                            <constraint firstAttribute="bottom" secondItem="Efm-Es-iVV" secondAttribute="bottom" id="Gbh-5j-Boi"/>
+                            <constraint firstItem="Efm-Es-iVV" firstAttribute="top" secondItem="14n-UE-kbd" secondAttribute="top" id="Xke-BH-Rp0"/>
+                            <constraint firstAttribute="centerY" secondItem="X0q-hG-ukf" secondAttribute="centerY" id="Yu6-Vx-tYP"/>
+                            <constraint firstItem="Efm-Es-iVV" firstAttribute="leading" secondItem="14n-UE-kbd" secondAttribute="leading" id="ZbB-cm-bjR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Web View" id="smS-cb-A5Y"/>
+                    <connections>
+                        <outlet property="spinner" destination="X0q-hG-ukf" id="iJY-3e-LtB"/>
+                        <outlet property="webView" destination="Efm-Es-iVV" id="fk8-GB-T09"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GNr-tf-Ifc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2897" y="1045"/>
         </scene>
         <!--User Name Image-->
         <scene sceneID="3jd-Jq-nSd">
@@ -220,8 +265,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dt4-WP-KgY">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dt4-WP-KgY">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
