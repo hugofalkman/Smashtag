@@ -17,6 +17,9 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     var allMedia = [[MediaItem]]()
+    var allTweets = [[Tweet]]()
+    
+    private var cache = NSCache()
     
     private var cellAreaSize = CGSize(width: 100.0, height: 100.0)
     private var pinchScale: CGFloat = 100.0 {
@@ -70,8 +73,10 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as ImageCollectionViewCell
         
         cell.backgroundColor = UIColor.blackColor()
+        cell.cache = cache
         let mediaItem = allMedia[indexPath.section][indexPath.row]
         cell.imageUrl = mediaItem.url
+        cell.tweet = allTweets[indexPath.section][indexPath.row]
         
         return cell
     }

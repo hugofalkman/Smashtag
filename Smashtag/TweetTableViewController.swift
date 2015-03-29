@@ -187,19 +187,26 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Navigation
     
-    private  var allMedia = [[MediaItem]]()
+    private var allMedia = [[MediaItem]]()
+    private var allTweets = [[Tweet]]()
     
     private func extractMediaItems() {
         allMedia = []
+        allTweets = []
         for sect in tweets {
             var sectMedia = [MediaItem]()
+            var sectTweet = [Tweet]()
             for tweet in sect {
                 if tweet.media.count > 0 {
                     sectMedia += tweet.media
+                    for _ in 0..<tweet.media.count {
+                    sectTweet.append(tweet)
+                    }
                 }
             }
             if sectMedia.count > 0 {
                 allMedia.append(sectMedia)
+                allTweets.append(sectTweet)
             }
         }
     }
@@ -235,6 +242,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                     let icvc = segue.destinationViewController as ImagesCollectionViewController
                     icvc.title = title! + ": Images"
                     icvc.allMedia = allMedia
+                    icvc.allTweets = allTweets
                 }
             default: break
             }
