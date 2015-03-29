@@ -14,6 +14,7 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
         static let cellReuseIdentifier = "Image"
         static let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
         static let blackBorderWidth = CGFloat(10.0)
+        static let tweetSequeIdentifier = "showTweetFromImage"
     }
 
     var allMedia = [[MediaItem]]()
@@ -45,16 +46,6 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
         super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
         collectionView?.collectionViewLayout.invalidateLayout()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -136,5 +127,17 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
     
     }
     */
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Constants.tweetSequeIdentifier {
+            if let ttvc = segue.destinationViewController as? TweetTableViewController {
+                if let cell = sender as? ImageCollectionViewCell {
+                    ttvc.tweets = [[cell.tweet]]
+                }
+            }
+        }
+    }
 
 }

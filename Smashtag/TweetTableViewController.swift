@@ -33,18 +33,27 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let text = searchText {
-        history.addSearch(text)
-        }
-        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        refresh()
         
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "preferredContentSizeChanged:",
             name: UIContentSizeCategoryDidChangeNotification,
             object: nil)
+        
+        // if tweets is nonzero dont refresh and instead display the single tweet in tweets
+        if tweets.count == 0 {
+            if let text = searchText {
+                history.addSearch(text)
+            }
+            refresh()
+            
+        } else {
+            searchTextField.text = " "
+            let tweet = tweets.first!.first!
+            title = "Tweet from " + tweet.user.name
+            tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, tableView.numberOfSections())), withRowAnimation: .None)
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -87,7 +96,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                             self.lastSuccessfulRequest = request
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
-                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections() - 1)), withRowAnimation: .None)
+                            self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections() )), withRowAnimation: .None)
                             self.title = self.searchText
                         }
                         sender?.endRefreshing()
