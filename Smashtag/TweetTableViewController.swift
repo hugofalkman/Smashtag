@@ -10,7 +10,8 @@ import UIKit
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var tweets = [[Tweet]]()
+    var tweets: [[Tweet]] = [[Tweet]]()
+    
     var history = SearchHistory()
     
     var searchText: String? = "#Stanford" {
@@ -128,7 +129,8 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     private struct Storyboard {
         static let cellReuseIdentifier = "Tweet"
-        static let mentionsIdentifier = "ShowMentions"
+        static let mentionsSegueIdentifier = "showMentions"
+        static let imagesSegueIdentifier = "showTweetSearchImages"
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -185,11 +187,35 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Navigation
     
+    private  var allMedia = [[MediaItem]]()
+    
+    private func extractMediaItems() {
+        allMedia = []
+        for sect in tweets {
+            var sectMedia = [MediaItem]()
+            for tweet in sect {
+                if tweet.media.count > 0 {
+                    sectMedia += tweet.media
+                }
+            }
+            if sectMedia.count > 0 {
+                allMedia.append(sectMedia)
+            }
+        }
+    }
+    
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         // cancel segue if zero mentions
-        if identifier == Storyboard.mentionsIdentifier {
+        if identifier == Storyboard.mentionsSegueIdentifier {
             if let cell = sender as? TweetTableViewCell {
                 if cell.tweetMentionsCount == 0 {return false}
+            }
+        }
+        // cancel segue if zero images
+        if identifier == Storyboard.imagesSegueIdentifier {
+            if let cell = sender as? UIBarButtonItem {
+                extractMediaItems()
+                if allMedia.count == 0 {return false}
             }
         }
         return true
@@ -198,13 +224,20 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let identifier = segue.identifier {
-            if identifier == Storyboard.mentionsIdentifier {
+            switch identifier {
+            case Storyboard.mentionsSegueIdentifier:
                 if let cell = sender as? TweetTableViewCell {
-                    let seguedToMTVC = segue.destinationViewController as MentionsTableViewController
-                    seguedToMTVC.tweet = cell.tweet
+                    let mtvc = segue.destinationViewController as MentionsTableViewController
+                    mtvc.tweet = cell.tweet
                 }
+            case Storyboard.imagesSegueIdentifier:
+                if let cell = sender as? UIBarButtonItem {
+                    let icvc = segue.destinationViewController as ImagesCollectionViewController
+                    icvc.title = title! + ": Images"
+                    icvc.allMedia = allMedia
+                }
+            default: break
             }
         }
     }
-
 }

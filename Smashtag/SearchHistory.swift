@@ -12,7 +12,7 @@ class SearchHistory
 {
     private struct Constants {
         static let searchesKey = "searchHistory"
-        static let maxSearches = 10
+        static let maxSearches = 100
     }
     
     private var defaults = NSUserDefaults.standardUserDefaults()
