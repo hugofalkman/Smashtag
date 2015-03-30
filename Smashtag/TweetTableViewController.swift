@@ -18,10 +18,12 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         didSet {
             lastSuccessfulRequest = nil
             searchTextField?.text = searchText
-            tweets.removeAll()
+            // add search to NSUserDefaults
             if let text = searchText {
             history.addSearch(text)
             }
+            tweets.removeAll()
+            // blank out screen while refreshing
             tableView.reloadData()
             refresh()
         }
@@ -43,12 +45,14 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         
         // if tweets is nonzero dont refresh and instead display the single tweet in tweets
         if tweets.count == 0 {
+            // add search to NSUserDefaults and refresh
             if let text = searchText {
                 history.addSearch(text)
             }
             refresh()
             
         } else {
+            // setup single tweet case
             searchTextField.text = " "
             let tweet = tweets.first!.first!
             title = "Tweet from " + tweet.user.name
@@ -90,10 +94,10 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func refresh(sender: UIRefreshControl?) {
         if searchText != nil {
             if let request = nextRequestToAttempt {
+                self.lastSuccessfulRequest = request
                 request.fetchTweets { (newTweets) -> Void in
                     dispatch_async(dispatch_get_main_queue()) { () -> Void in
                         if newTweets.count > 0 {
-                            self.lastSuccessfulRequest = request
                             self.tweets.insert(newTweets, atIndex: 0)
                             self.tableView.reloadData()
                             self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, self.tableView.numberOfSections() )), withRowAnimation: .None)
