@@ -82,7 +82,7 @@
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                         </textField>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tweet" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="169" id="LuO-TY-ZR5" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tweet" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Tweet2" rowHeight="169" id="LuO-TY-ZR5" customClass="RootTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LuO-TY-ZR5" id="Leu-hd-wYM">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -431,19 +431,19 @@
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                         </textField>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tweet" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="169" id="CZa-lE-nTx" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Tweet" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tweet" rowHeight="169" id="CZa-lE-nTx" customClass="TweetTableViewCell" customModule="Smashtag" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CZa-lE-nTx" id="COS-cP-Vmx">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="700" text="Tweet Text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrP-Da-8gr">
-                                            <rect key="frame" x="64" y="36" width="495" height="124.5"/>
+                                            <rect key="frame" x="64" y="36" width="528" height="124.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="Tweeter" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UI6-1R-umq">
-                                            <rect key="frame" x="64" y="8" width="495" height="19.5"/>
+                                            <rect key="frame" x="64" y="8" width="528" height="19.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
