@@ -55,7 +55,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             // setup single tweet case
             searchTextField.text = " "
             let tweet = tweets.first!.first!
-            title = "Tweet from " + tweet.user.name
+            title = "Tweet by " + tweet.user.name
             tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, tableView.numberOfSections())), withRowAnimation: .None)
         }
         
