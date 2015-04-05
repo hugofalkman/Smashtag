@@ -16,6 +16,7 @@
 		B16B00A71AAD9F1700238B67 /* SmashtagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B00A61AAD9F1700238B67 /* SmashtagTests.swift */; };
 		B16F5F421ACCB0200096CBEA /* RootTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16F5F411ACCB0200096CBEA /* RootTableViewCell.swift */; };
 		B1B1069C1ACC3AD500778D1D /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1069B1ACC3AD500778D1D /* RootTableViewController.swift */; };
+		B1B986A91AD159D500E14280 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B986A81AD159D500E14280 /* SettingsViewController.swift */; };
 		B1DB21BC1ABA2E050051E686 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */; };
 		B1DB7B3C1ABE2D6F0033789E /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */; };
 		B1DBB0F81AC5C0CC0002BABC /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DBB0F71AC5C0CC0002BABC /* ImageCollectionViewCell.swift */; };
@@ -54,6 +55,7 @@
 		B16B00A61AAD9F1700238B67 /* SmashtagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmashtagTests.swift; sourceTree = "<group>"; };
 		B16F5F411ACCB0200096CBEA /* RootTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewCell.swift; sourceTree = "<group>"; };
 		B1B1069B1ACC3AD500778D1D /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
+		B1B986A81AD159D500E14280 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B1DB21BB1ABA2E050051E686 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		B1DB7B3B1ABE2D6F0033789E /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		B1DBB0F71AC5C0CC0002BABC /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				B128C3301AC35CD500229ADF /* WebViewController.swift */,
 				B1FFA6C01AC427C100EA2467 /* ImagesCollectionViewController.swift */,
 				B1DBB0F71AC5C0CC0002BABC /* ImageCollectionViewCell.swift */,
+				B1B986A81AD159D500E14280 /* SettingsViewController.swift */,
 				B16B00941AAD9F1700238B67 /* Main.storyboard */,
 				B1DFE0661AADA2F600952732 /* Twitter */,
 				B16B008E1AAD9F1700238B67 /* Supporting Files */,
@@ -282,6 +285,7 @@
 				B1DFE06E1AADA2F600952732 /* User.swift in Sources */,
 				B128C3311AC35CD500229ADF /* WebViewController.swift in Sources */,
 				B13479A81AADDB29003D093E /* TweetTableViewCell.swift in Sources */,
+				B1B986A91AD159D500E14280 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -411,11 +411,47 @@
                     <connections>
                         <segue destination="8Im-A6-vjw" kind="relationship" relationship="viewControllers" id="Y74-Bt-rxv"/>
                         <segue destination="vWm-bQ-49N" kind="relationship" relationship="viewControllers" id="iwK-vf-lQe"/>
+                        <segue destination="kJO-cy-wxS" kind="relationship" relationship="viewControllers" id="m9j-l0-PWN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lsh-BX-GDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="782" y="1045"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="76E-tJ-S7k">
+            <objects>
+                <viewController id="kJO-cy-wxS" customClass="SettingsViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nLJ-op-xeA"/>
+                        <viewControllerLayoutGuide type="bottom" id="wCE-ZX-6SF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fGF-6z-YtN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-hd-vh5">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Default Settings" id="ULY-yi-TpG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="smk-b2-bWq"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="42v-cX-0TZ"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Igf-hd-vh5" secondAttribute="trailing" id="4j6-Vq-2Gm"/>
+                            <constraint firstItem="Igf-hd-vh5" firstAttribute="leading" secondItem="fGF-6z-YtN" secondAttribute="leading" id="AfH-5b-Z4A"/>
+                            <constraint firstItem="Igf-hd-vh5" firstAttribute="top" secondItem="nLJ-op-xeA" secondAttribute="bottom" constant="8" id="aZI-Kx-N04"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Gear" id="QqV-G8-xPS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2Q-Qf-kQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="1772"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tvz-1v-VKj">
@@ -545,6 +581,9 @@
             <point key="canvasLocation" x="2209" y="209"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Gear" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NJf-rX-zEP"/>
         <segue reference="cKj-bp-Ysk"/>
