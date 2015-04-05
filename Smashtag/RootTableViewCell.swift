@@ -10,11 +10,4 @@ import UIKit
 
 class RootTableViewCell: TweetTableViewCell {
     
-    override func setAccessoryType() {
-        if tweetMentionsCount > 0 {
-            accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        } else {
-            accessoryType = UITableViewCellAccessoryType.None
-        }
-    }
 }

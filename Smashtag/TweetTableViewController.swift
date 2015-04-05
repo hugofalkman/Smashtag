@@ -30,6 +30,12 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     var searchTextCandidate: String?
     
+    private struct Storyboard {
+        static let cellReuseIdentifier = "Tweet"
+        static let mentionsSegueIdentifier = "showMentions"
+        static let imagesSegueIdentifier = "showTweetSearchImages"
+    }
+    
     // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
@@ -50,6 +56,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                 history.addSearch(text)
             }
             refresh()
+            // also add camera icon if not there
+            let cameraButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "segueImages:")
+            if let button = navigationItem.rightBarButtonItem {
+                navigationItem.rightBarButtonItems = [button,cameraButton]
+            } else {
+                navigationItem.rightBarButtonItem = cameraButton
+            }
             
         } else {
             // setup single tweet case
@@ -57,6 +70,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             let tweet = tweets.first!.first!
             title = "Tweet by " + tweet.user.name
             tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(0, tableView.numberOfSections())), withRowAnimation: .None)
+        }
+    }
+    
+    func segueImages(sender: UIBarButtonItem) {
+        extractMediaItems()
+        if allMedia.count != 0 {
+        performSegueWithIdentifier(Storyboard.imagesSegueIdentifier, sender: sender)
         }
     }
     
@@ -121,6 +141,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    /*
     @IBAction func returnMention(segue: UIStoryboardSegue) {
         // seque wasn't cancelled so now searchText can be set
         if let candidate = searchTextCandidate {
@@ -131,14 +152,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
+    */
     
     // MARK: - UITableViewDataSource
-    
-    private struct Storyboard {
-        static let cellReuseIdentifier = "Tweet"
-        static let mentionsSegueIdentifier = "showMentions"
-        static let imagesSegueIdentifier = "showTweetSearchImages"
-    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tweets.count

@@ -115,7 +115,7 @@ class MentionsTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        // if url, cancel seque and open safari
+        // if url, cancel seque and segue to webview
         if identifier == Storyboard.unwindSegueIdentifier {
             if let cell = sender as? UITableViewCell {
                 if let url = cell.textLabel?.text {
@@ -138,7 +138,8 @@ class MentionsTableViewController: UITableViewController {
                     if let cell = sender as? UITableViewCell {
                         // wait to add to searchText until in the IBAction returnMention function
                         // you know that the segue wasnt cancelled for a url -- see above
-                        ttvc.searchTextCandidate = cell.textLabel?.text
+                        // ttvc.searchTextCandidate = cell.textLabel?.text
+                        ttvc.searchText = cell.textLabel?.text
                     }
                 }
             case Storyboard.scrollViewSegueIdentifier:

@@ -60,9 +60,16 @@
                             <outlet property="delegate" destination="3iZ-o6-Mgj" id="jdn-jc-VDJ"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Tweet Search Images" id="YZn-tu-fZ3"/>
+                    <navigationItem key="navigationItem" title="Tweet Search Images" id="YZn-tu-fZ3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="FHk-7Z-ycm">
+                            <connections>
+                                <segue destination="CcC-B1-ssK" kind="unwind" unwindAction="returnImages:" id="aC8-Sd-h1X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fS4-8A-oSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CcC-B1-ssK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1500" y="209"/>
         </scene>
@@ -151,13 +158,7 @@
                             <outlet property="delegate" destination="1fS-iw-vSR" id="ZgM-8S-Azx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Twitter" id="Uhd-w9-SNj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="7pT-I9-D9v">
-                            <connections>
-                                <segue destination="3iZ-o6-Mgj" kind="show" identifier="showTweetSearchImages" id="lnV-Wb-1w2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search Twitter" id="Uhd-w9-SNj"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="qBF-Ku-cbn">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -166,6 +167,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="searchTextField" destination="OU9-id-MB9" id="cRp-iO-h5Z"/>
+                        <segue destination="3iZ-o6-Mgj" kind="show" identifier="showTweetSearchImages" id="cKj-bp-Ysk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLt-uK-K92" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -233,7 +235,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="uOp-hg-APD" kind="unwind" identifier="searchMention" unwindAction="returnMention:" id="WND-LK-i5z"/>
+                                    <segue destination="dm9-QO-l16" kind="show" identifier="searchMention" id="eBs-1V-Hip"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Image" rowHeight="167" id="KiL-T8-itN" customClass="ImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
@@ -270,7 +272,13 @@
                             <outlet property="delegate" destination="WJJ-vD-jyo" id="11A-iK-BiC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User Name" id="hgo-Yh-ioH"/>
+                    <navigationItem key="navigationItem" title="User Name" id="hgo-Yh-ioH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Sct-Zw-7Bd">
+                            <connections>
+                                <segue destination="uOp-hg-APD" kind="unwind" unwindAction="returnImages:" id="3J5-Kq-GHX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="TD9-Gc-3gW" kind="show" identifier="showWebView" id="ooE-ej-udm"/>
                     </connections>
@@ -311,13 +319,20 @@
                             <constraint firstItem="Efm-Es-iVV" firstAttribute="leading" secondItem="14n-UE-kbd" secondAttribute="leading" id="ZbB-cm-bjR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Web View" id="smS-cb-A5Y"/>
+                    <navigationItem key="navigationItem" title="Web View" id="smS-cb-A5Y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="8Sk-lJ-9c4">
+                            <connections>
+                                <segue destination="0d7-L8-KaB" kind="unwind" unwindAction="returnImages:" id="1yg-Gg-Axf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="X0q-hG-ukf" id="iJY-3e-LtB"/>
                         <outlet property="webView" destination="Efm-Es-iVV" id="fk8-GB-T09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNr-tf-Ifc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0d7-L8-KaB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2897" y="1045"/>
         </scene>
@@ -348,12 +363,18 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="User Name Image" id="vap-8K-z5N">
                         <barButtonItem key="backBarButtonItem" title="s" id="3At-ig-YxZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cEr-cy-giG">
+                            <connections>
+                                <segue destination="Wpy-j8-rZm" kind="unwind" unwindAction="returnImages:" id="Lug-9p-hDx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="dt4-WP-KgY" id="WRL-6d-AYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRM-7o-I5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wpy-j8-rZm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2209" y="1772"/>
         </scene>
@@ -491,6 +512,7 @@
                                     <outlet property="tweetProfileImageView" destination="07L-jM-ep7" id="vcC-sA-bDg"/>
                                     <outlet property="tweetScreenNameLabel" destination="UI6-1R-umq" id="Ev9-In-XD1"/>
                                     <outlet property="tweetTextLabel" destination="WrP-Da-8gr" id="WiA-sx-aNJ"/>
+                                    <segue destination="WJJ-vD-jyo" kind="show" identifier="showMentions" id="MEF-Z2-xXV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -514,6 +536,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="searchTextField" destination="VaH-NO-zVu" id="HwI-AP-ca9"/>
+                        <segue destination="3iZ-o6-Mgj" kind="show" identifier="showTweetSearchImages" id="ACF-ri-Ged"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aG4-Ps-scZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,5 +547,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="NJf-rX-zEP"/>
+        <segue reference="cKj-bp-Ysk"/>
+        <segue reference="g5B-C6-mR4"/>
+        <segue reference="eBs-1V-Hip"/>
     </inferredMetricsTieBreakers>
 </document>

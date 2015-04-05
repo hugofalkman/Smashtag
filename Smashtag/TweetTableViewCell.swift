@@ -50,7 +50,11 @@ class TweetTableViewCell: UITableViewCell {
     }
     
     func setAccessoryType() {
-        accessoryType = UITableViewCellAccessoryType.None
+        if tweetMentionsCount > 0 {
+            accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        } else {
+            accessoryType = UITableViewCellAccessoryType.None
+        }
     }
     
     private func setTextLabel(tweet: Tweet) -> NSMutableAttributedString {
