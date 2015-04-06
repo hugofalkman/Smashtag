@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Tweet Search Images-->
@@ -82,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="100"/>
-                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Query" minimumFontSize="17" id="OU9-id-MB9">
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Query" minimumFontSize="17" clearButtonMode="whileEditing" id="OU9-id-MB9">
                             <rect key="frame" x="0.0" y="-30" width="600" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -210,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DD-uJ-VST" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="1772"/>
+            <point key="canvasLocation" x="2209" y="1772"/>
         </scene>
         <!--User Name-->
         <scene sceneID="7Q9-52-Zzw">
@@ -376,7 +377,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRM-7o-I5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wpy-j8-rZm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="1772"/>
+            <point key="canvasLocation" x="2897" y="1772"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EqI-rO-VSq">
@@ -434,24 +435,90 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Default Settings" id="ULY-yi-TpG">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="smk-b2-bWq"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="42v-cX-0TZ"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="smk-b2-bWq">
+                                            <connections>
+                                                <action selector="tappedCancel:" destination="kJO-cy-wxS" id="brQ-9P-ulh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="42v-cX-0TZ">
+                                            <connections>
+                                                <action selector="tappedSave:" destination="kJO-cy-wxS" id="JgK-mY-SWl"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Twitter Search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bee-tv-2cQ">
+                                <rect key="frame" x="16" y="118.5" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max # of searches in History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTS-A1-QCK">
+                                <rect key="frame" x="16" y="256" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max # of tweets in one search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmF-Z6-0fl">
+                                <rect key="frame" x="16" y="394" width="568" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Query" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VqI-kb-qBz">
+                                <rect key="frame" x="16" y="176.5" width="568" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Searches" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="95U-yS-qNj">
+                                <rect key="frame" x="16" y="314.5" width="568" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of Tweets" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nqh-Er-MhC">
+                                <rect key="frame" x="16" y="452" width="568" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="95U-yS-qNj" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="5:8" priority="800" id="21A-Md-UDD"/>
                             <constraint firstAttribute="trailing" secondItem="Igf-hd-vh5" secondAttribute="trailing" id="4j6-Vq-2Gm"/>
                             <constraint firstItem="Igf-hd-vh5" firstAttribute="leading" secondItem="fGF-6z-YtN" secondAttribute="leading" id="AfH-5b-Z4A"/>
+                            <constraint firstItem="gmF-Z6-0fl" firstAttribute="leading" secondItem="95U-yS-qNj" secondAttribute="leading" id="EbF-eC-Zsx"/>
+                            <constraint firstItem="UTS-A1-QCK" firstAttribute="trailing" secondItem="VqI-kb-qBz" secondAttribute="trailing" id="GzQ-DB-hWv"/>
+                            <constraint firstItem="VqI-kb-qBz" firstAttribute="trailing" secondItem="Bee-tv-2cQ" secondAttribute="trailing" id="H94-od-e0e"/>
+                            <constraint firstItem="UTS-A1-QCK" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="4:8" priority="850" id="MJI-7z-F33"/>
+                            <constraint firstItem="95U-yS-qNj" firstAttribute="trailing" secondItem="UTS-A1-QCK" secondAttribute="trailing" id="PB9-l9-lRD"/>
+                            <constraint firstItem="gmF-Z6-0fl" firstAttribute="trailing" secondItem="95U-yS-qNj" secondAttribute="trailing" id="QFu-Zh-axg"/>
+                            <constraint firstItem="Bee-tv-2cQ" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="2:8" priority="950" id="Ra5-zl-el5"/>
+                            <constraint firstItem="nqh-Er-MhC" firstAttribute="trailing" secondItem="gmF-Z6-0fl" secondAttribute="trailing" id="UaM-yV-zN5"/>
+                            <constraint firstItem="wCE-ZX-6SF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nqh-Er-MhC" secondAttribute="bottom" id="YQn-8R-wEn"/>
+                            <constraint firstItem="95U-yS-qNj" firstAttribute="leading" secondItem="UTS-A1-QCK" secondAttribute="leading" id="YZt-nl-Qvx"/>
+                            <constraint firstItem="Bee-tv-2cQ" firstAttribute="leading" secondItem="fGF-6z-YtN" secondAttribute="leadingMargin" id="aXj-x7-5Fa"/>
                             <constraint firstItem="Igf-hd-vh5" firstAttribute="top" secondItem="nLJ-op-xeA" secondAttribute="bottom" constant="8" id="aZI-Kx-N04"/>
+                            <constraint firstItem="VqI-kb-qBz" firstAttribute="leading" secondItem="Bee-tv-2cQ" secondAttribute="leading" id="alE-18-43I"/>
+                            <constraint firstItem="nqh-Er-MhC" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="7:8" priority="700" id="faa-ft-5Fm"/>
+                            <constraint firstItem="Bee-tv-2cQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Igf-hd-vh5" secondAttribute="bottom" symbolic="YES" id="fjC-FU-uhJ"/>
+                            <constraint firstItem="gmF-Z6-0fl" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="6:8" priority="750" id="mfD-fi-w6o"/>
+                            <constraint firstItem="nqh-Er-MhC" firstAttribute="leading" secondItem="gmF-Z6-0fl" secondAttribute="leading" id="muY-dZ-ewe"/>
+                            <constraint firstItem="UTS-A1-QCK" firstAttribute="leading" secondItem="VqI-kb-qBz" secondAttribute="leading" id="oJA-AZ-PlW"/>
+                            <constraint firstItem="VqI-kb-qBz" firstAttribute="bottom" secondItem="wCE-ZX-6SF" secondAttribute="top" multiplier="3:8" priority="900" id="pIS-QO-BDk"/>
+                            <constraint firstItem="Bee-tv-2cQ" firstAttribute="trailing" secondItem="fGF-6z-YtN" secondAttribute="trailingMargin" id="pq5-Be-xOP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="Gear" id="QqV-G8-xPS"/>
+                    <connections>
+                        <outlet property="numberSearchesField" destination="95U-yS-qNj" id="a8l-hE-D9Z"/>
+                        <outlet property="numberTweetsField" destination="nqh-Er-MhC" id="i3Z-X4-Jbd"/>
+                        <outlet property="textSearchField" destination="VqI-kb-qBz" id="Cl4-2Z-AfH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2Q-Qf-kQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="1772"/>
+            <point key="canvasLocation" x="782" y="1772"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tvz-1v-VKj">
@@ -470,7 +537,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KT-zJ-TcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="1772"/>
+            <point key="canvasLocation" x="1500" y="1772"/>
         </scene>
         <!--Display Tweet-->
         <scene sceneID="lSn-dN-My7">
@@ -481,7 +548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="100"/>
-                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Query" minimumFontSize="17" id="VaH-NO-zVu">
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search Query" minimumFontSize="17" clearButtonMode="whileEditing" id="VaH-NO-zVu">
                             <rect key="frame" x="0.0" y="-30" width="600" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -585,7 +652,7 @@
         <image name="Gear" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NJf-rX-zEP"/>
+        <segue reference="MGX-44-1zb"/>
         <segue reference="cKj-bp-Ysk"/>
         <segue reference="g5B-C6-mR4"/>
         <segue reference="eBs-1V-Hip"/>

@@ -12,10 +12,14 @@ class SearchHistory
 {
     private struct Constants {
         static let searchesKey = "searchHistory"
-        static let maxSearches = 100
+        static let maxSearchesKey = "defaultSearches"
     }
     
-    private var defaults = NSUserDefaults.standardUserDefaults()
+    private let defaults = NSUserDefaults.standardUserDefaults()
+    
+    private var maxSearches: Int {
+        return defaults.objectForKey(Constants.maxSearchesKey) as? Int ?? 1
+    }
     
     var allSearches: [String] {
         get {return defaults.objectForKey(Constants.searchesKey) as? [String] ?? [String]() }
@@ -28,7 +32,8 @@ class SearchHistory
             searches.removeAtIndex(i)
         }
         searches.insert(Search, atIndex: 0)
-        while searches.count > Constants.maxSearches {
+        let max = maxSearches
+        while searches.count > max {
             searches.removeLast()
         }
         allSearches = searches

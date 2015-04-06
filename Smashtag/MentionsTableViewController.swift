@@ -139,7 +139,13 @@ class MentionsTableViewController: UITableViewController {
                         // wait to add to searchText until in the IBAction returnMention function
                         // you know that the segue wasnt cancelled for a url -- see above
                         // ttvc.searchTextCandidate = cell.textLabel?.text
-                        ttvc.searchText = cell.textLabel?.text
+                        var text = cell.textLabel?.text
+                        if text != nil {
+                            if text!.hasPrefix("@") {
+                                text! += " OR from:" + text!
+                            }
+                        }
+                        ttvc.searchText = text
                     }
                 }
             case Storyboard.scrollViewSegueIdentifier:

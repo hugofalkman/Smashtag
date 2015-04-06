@@ -14,8 +14,9 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     var history = SearchHistory()
     
-    var searchText: String? = "#Stanford" {
+    var searchText: String? {
         didSet {
+            if oldValue != searchText {
             lastSuccessfulRequest = nil
             searchTextField?.text = searchText
             // add search to NSUserDefaults
@@ -26,17 +27,26 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             // blank out screen while refreshing
             tableView.reloadData()
             refresh()
+            }
         }
     }
-    var searchTextCandidate: String?
+    // var searchTextCandidate: String?
     
     private struct Storyboard {
         static let cellReuseIdentifier = "Tweet"
         static let mentionsSegueIdentifier = "showMentions"
         static let imagesSegueIdentifier = "showTweetSearchImages"
+        
+        static let NumberTweetsKey = "defaultTweets"
     }
     
-    // MARK: - View Controller Lifecycle
+    let defaults = NSUserDefaults.standardUserDefaults()
+   
+    private var numTweets: Int {
+        return defaults.objectForKey(Storyboard.NumberTweetsKey) as? Int ?? 1
+    }
+    
+       // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +66,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                 history.addSearch(text)
             }
             refresh()
-            // also add camera icon if not there
+            // also add camera icon
             let cameraButton = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "segueImages:")
             if let button = navigationItem.rightBarButtonItem {
                 navigationItem.rightBarButtonItems = [button,cameraButton]
@@ -85,7 +95,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private var nextRequestToAttempt: TwitterRequest? {
         if lastSuccessfulRequest == nil {
             if searchText != nil {
-                return TwitterRequest(search: searchText!, count: 100)
+                return TwitterRequest(search: searchText!, count: numTweets)
             } else {
                 return nil
             }
@@ -108,7 +118,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func refresh(sender: UIRefreshControl?) {
         if searchText != nil {
             if let request = nextRequestToAttempt {
-                self.lastSuccessfulRequest = request
+                lastSuccessfulRequest = request
                 request.fetchTweets { (newTweets) -> Void in
                     dispatch_async(dispatch_get_main_queue()) { () -> Void in
                         if newTweets.count > 0 {

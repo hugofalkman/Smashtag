@@ -37,8 +37,7 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-        let test = history.allSearches[indexPath.row]
-        cell.textLabel?.text = test
+        cell.textLabel?.text = history.allSearches[indexPath.row]
         return cell
     }
 
