@@ -42,8 +42,8 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
         }
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         collectionView?.collectionViewLayout.invalidateLayout()
     }
 
@@ -61,7 +61,7 @@ class ImagesCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as! ImageCollectionViewCell
         
         cell.backgroundColor = UIColor.blackColor()
         cell.cache = cache

@@ -54,10 +54,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "preferredContentSizeChanged:",
-            name: UIContentSizeCategoryDidChangeNotification,
-            object: nil)
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        let object = UIApplication.sharedApplication()
+    
+        center.addObserverForName(UIContentSizeCategoryDidChangeNotification, object: object, queue: queue) { notification in
+                self.refresh()
+            }
         
         // if tweets is nonzero dont refresh and instead display the single tweet in tweets
         if tweets.count == 0 {
@@ -102,10 +105,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         } else {
             return lastSuccessfulRequest!.requestForNewer
         }
-    }
-
-    func preferredContentSizeChanged(notification: NSNotification) {
-        refresh()
     }
     
     private func refresh() {
@@ -175,7 +174,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as TweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! TweetTableViewCell
         // Configure the cell...
         cell.tweet = tweets[indexPath.section][indexPath.row]
         return cell
@@ -230,12 +229,12 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             switch identifier {
             case Storyboard.mentionsSegueIdentifier:
                 if let cell = sender as? TweetTableViewCell {
-                    let mtvc = segue.destinationViewController as MentionsTableViewController
+                    let mtvc = segue.destinationViewController as! MentionsTableViewController
                     mtvc.tweet = cell.tweet
                 }
             case Storyboard.imagesSegueIdentifier:
                 if let cell = sender as? UIBarButtonItem {
-                    let icvc = segue.destinationViewController as ImagesCollectionViewController
+                    let icvc = segue.destinationViewController as! ImagesCollectionViewController
                     icvc.title = title! + ": Images"
                     icvc.allMedia = allMedia
                     icvc.allTweets = allTweets

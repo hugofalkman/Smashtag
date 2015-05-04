@@ -53,7 +53,7 @@ class RootTableViewController: TweetTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as RootTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as! RootTableViewCell
         // Configure the cell...
         cell.tweet = tweets[indexPath.section][indexPath.row]
         return cell

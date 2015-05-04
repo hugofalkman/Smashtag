@@ -79,11 +79,11 @@ class MentionsTableViewController: UITableViewController {
         let mention = mentions[indexPath.section][indexPath.row]
         switch mention {
         case .Image(let url, let _):
-            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.imageCellReuseIdentifier, forIndexPath: indexPath) as ImageTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.imageCellReuseIdentifier, forIndexPath: indexPath) as! ImageTableViewCell
             cell.imageUrl = url
             return cell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mentionCellReuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.mentionCellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = mention.description
             return cell
         }
@@ -108,7 +108,7 @@ class MentionsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header:UITableViewHeaderFooterView = view as UITableViewHeaderFooterView
+        let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.textLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
     
