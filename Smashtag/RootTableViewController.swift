@@ -43,6 +43,16 @@ class RootTableViewController: TweetTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // start observing for changes in font size
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        let object = UIApplication.sharedApplication()
+        
+        center.addObserverForName(UIContentSizeCategoryDidChangeNotification, object: object, queue: queue) { notification in
+            self.refresh()
+        }
+        
         // set defaults if NSUserDefaults is not initialized
         defaultSearchText = defaultSearchText ?? Constants.defaultFirstSearch
         if searchText == nil {

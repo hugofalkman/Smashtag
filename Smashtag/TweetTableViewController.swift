@@ -54,14 +54,6 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        let center = NSNotificationCenter.defaultCenter()
-        let queue = NSOperationQueue.mainQueue()
-        let object = UIApplication.sharedApplication()
-    
-        center.addObserverForName(UIContentSizeCategoryDidChangeNotification, object: object, queue: queue) { notification in
-                self.refresh()
-            }
-        
         // if tweets is nonzero dont refresh and instead display the single tweet in tweets
         if tweets.count == 0 {
             // add search to NSUserDefaults and refresh
@@ -107,7 +99,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    private func refresh() {
+    func refresh() {
         if refreshControl != nil {
             refreshControl?.beginRefreshing()
         }
